@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const slides = [
   {
@@ -53,8 +54,8 @@ function HeroSection() {
           <Image
             src={current.lampImage}
             alt="Lamp"
-            width={387} // Fixed size for lamp
-            height={387} // Fixed size for lamp
+            width={387} 
+            height={387} 
             className="object-contain"
           />
         </div>
@@ -99,7 +100,7 @@ function HeroSection() {
       {/* Navigation Dots */}
       <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (
-          <button
+          <Button
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full ${
@@ -107,7 +108,7 @@ function HeroSection() {
                 ? "bg-pink-500"
                 : "bg-gray-300 hover:bg-gray-400"
             }`}
-          ></button>
+          ></Button>
         ))}
       </div>
 

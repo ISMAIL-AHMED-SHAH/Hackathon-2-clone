@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
+
 import React from 'react';
 
 const Footer = () => {
@@ -13,12 +13,13 @@ const Footer = () => {
           <div className="flex items-center overflow-hidden">
             <input
               type="text"
-              className="px-2 py-2 border border-gray-500 text-sm text-gray-600 outline-none bg-white"
+              className="px-2 py-2 border border-gray-500 text-sm text-gray-600 outline-none bg-white rounded"
               placeholder="Enter Email Address"
             />
-            <Button className="px-4 py-2 bg-pink-500 hover:bg-pink-400">
-              Sign Up
-            </Button>
+            <Button asChild className="px-4 rounded py-2 bg-pink-500 hover:bg-pink-400">
+  <span>Sign Up</span>
+</Button>
+
           </div>
           <div className="pt-5 text-gray-600">
             <p>
@@ -69,14 +70,8 @@ const Footer = () => {
 
       {/* Copyright Section */}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 items-center w-4/5 mx-auto">
-        <p className="text-sm text-black opacity-60">© iQ Shop 2024</p>
-        <Image
-          src="/images/pay.svg"
-          alt="pay"
-          width={230}
-          height={230}
-          className="object-contain sm:ml-auto"
-        />
+        <p className="text-sm text-black opacity-60">©Webecy - All Rights Reserved</p>
+        
       </div>
     </footer>
   );

@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 
 const FeaturedProducts = () => {
@@ -59,9 +60,10 @@ const FeaturedProducts = () => {
               </div>
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-purple-500 text-white opacity-0 hover:opacity-100 flex items-center justify-center rounded-xl transition duration-300">
-                <button className="py-2 px-4 bg-white text-purple-500 font-bold rounded-md shadow-md">
-                  View Details
-                </button>
+                <Button className="py-2 px-4 bg-white text-purple-500 font-bold rounded-md shadow-md">
+                  <span>View Details
+                    </span>
+                </Button>
               </div>
             </div>
           ))}
