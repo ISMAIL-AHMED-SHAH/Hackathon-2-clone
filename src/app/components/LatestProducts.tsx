@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 
 const LatestProducts: React.FC = () => {
@@ -29,7 +30,7 @@ const LatestProducts: React.FC = () => {
         {/* Categories */}
         <div className="flex justify-center space-x-6 mb-12">
           {categories.map((category, index) => (
-            <button
+            <Button
               key={index}
               className={`text-sm font-medium ${
                 index === 0
@@ -38,7 +39,7 @@ const LatestProducts: React.FC = () => {
               } hover:text-pink-500`}
             >
               {category}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -79,15 +80,15 @@ const LatestProducts: React.FC = () => {
 
               {/* Hover Icons */}
               <div className="flex justify-center space-x-4 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
+                <Button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
                   ❤️
-                </button>
-                <button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
+                </Button>
+                <Button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
                   🛒
-                </button>
-                <button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
+                </Button>
+                <Button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
                   🔍
-                </button>
+                </Button>
               </div>
             </div>
           ))}

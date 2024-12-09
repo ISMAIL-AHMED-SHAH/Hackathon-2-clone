@@ -56,43 +56,44 @@ const Navbar = () => {
         </div>
 
         <Sheet>
-          <SheetTrigger>
-            <Button variant={"outline"} size={"icon"} className="hidden rounded-xl">
-              <Menu />
-            </Button>
-          </SheetTrigger>
-          <SheetContent>
-            <SheetHeader>
-              <SheetTitle>Hekto</SheetTitle>
-            </SheetHeader>
-            <div className="flex flex-col gap-6 mt-6">
-              <Link className="text-sm font-normal hover:text-black" href="#">
-                Pages
-              </Link>
-              <Link className="text-sm font-normal hover:text-black" href="#">
-                Products
-              </Link>
-              <Link className="text-sm font-normal hover:text-black" href="#">
-                Blog
-              </Link>
-              <Link className="text-sm font-normal hover:text-black" href="#">
-                Shop
-              </Link>
-              <Link className="text-sm font-normal hover:text-black" href="#">
-                Contact
-              </Link>
-            </div>
-            <div className="mt-4">
-              <div className="relative">
-                <input
-                  placeholder="Search Products"
-                  className="bg-[#F5F5F5] rounded"
-                />
-                <Search className="absolute right-2 top-2" />
-              </div>
-            </div>
-          </SheetContent>
-        </Sheet>
+  <SheetTrigger>
+    <Button variant={"outline"} size={"icon"} className="block md:hidden rounded-xl">
+      <Menu />
+    </Button>
+  </SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Hekto</SheetTitle>
+    </SheetHeader>
+    <div className="flex flex-col gap-6 mt-6">
+      <Link className="text-sm font-normal hover:text-black" href="#">
+        Pages
+      </Link>
+      <Link className="text-sm font-normal hover:text-black" href="#">
+        Products
+      </Link>
+      <Link className="text-sm font-normal hover:text-black" href="#">
+        Blog
+      </Link>
+      <Link className="text-sm font-normal hover:text-black" href="#">
+        Shop
+      </Link>
+      <Link className="text-sm font-normal hover:text-black" href="#">
+        Contact
+      </Link>
+    </div>
+    <div className="mt-4">
+      <div className="relative">
+        <input
+          placeholder="Search Products"
+          className="bg-[#F5F5F5] rounded"
+        />
+        <Search className="absolute right-2 top-2" />
+      </div>
+    </div>
+  </SheetContent>
+</Sheet>
+
       </div>
     </div>
   );

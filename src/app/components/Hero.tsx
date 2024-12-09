@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 const slides = [
   {
@@ -10,7 +9,7 @@ const slides = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.",
     buttonText: "Shop Now",
-    chairImage: "/Shell-Shaped.png", 
+    chairImage: "/Shell-Shaped.png",
     lampImage: "/lamp.png",
   },
   {
@@ -18,7 +17,7 @@ const slides = [
     description:
       "Discover the latest modern furniture trends to elevate your living space.",
     buttonText: "Shop Now",
-    chairImage: "/Shell-Shaped.png", 
+    chairImage: "/Shell-Shaped.png",
     lampImage: "/lamp.png",
   },
   {
@@ -26,8 +25,9 @@ const slides = [
     description:
       "Bring timeless elegance to your home with our exclusive furniture collection.",
     buttonText: "Shop Now",
-    chairImage: "/Shell-Shaped.png", 
-    lampImage: "/lamp.png", 
+    chairImage: "/Shell-Shaped.png",
+    lampImage: "/lamp.png",
+    discountText: "Discount",
   },
 ];
 
@@ -54,8 +54,8 @@ function HeroSection() {
           <Image
             src={current.lampImage}
             alt="Lamp"
-            width={387} 
-            height={387} 
+            width={387}
+            height={387}
             className="object-contain"
           />
         </div>
@@ -91,40 +91,41 @@ function HeroSection() {
             className="object-contain w-full h-auto"
           />
         </div>
-        {/* Discount Badge (if needed) */}
-        {/* <div className="absolute top-10 right-5 bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xs font-medium py-2 px-4 rounded-full">
-          {current.discountText}
-        </div> */}
+
+        {/* Responsive Discount Badge */}
+        <div className="absolute top-4 md:top-6 right-4 md:right-6 bg-blue-500 text-white text-sm md:text-lg font-bold px-4 py-2 md:px-8 md:py-12 rounded-full">
+          50% Off
+        </div>
       </div>
 
       {/* Navigation Dots */}
       <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (
-          <Button
+          <div
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full ${
+            className={`cursor-pointer w-3 h-3 rounded-full ${
               currentSlide === index
                 ? "bg-pink-500"
                 : "bg-gray-300 hover:bg-gray-400"
             }`}
-          ></Button>
+          ></div>
         ))}
       </div>
 
       {/* Navigation Arrows */}
-      <button
+      <div
         onClick={handlePrevSlide}
-        className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 hover:bg-gray-100"
+        className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 hover:bg-gray-100 cursor-pointer"
       >
         ❮
-      </button>
-      <button
+      </div>
+      <div
         onClick={handleNextSlide}
-        className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 hover:bg-gray-100"
+        className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full p-2 hover:bg-gray-100 cursor-pointer"
       >
         ❯
-      </button>
+      </div>
     </section>
   );
 }

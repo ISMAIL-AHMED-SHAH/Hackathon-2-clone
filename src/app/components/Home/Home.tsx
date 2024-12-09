@@ -4,6 +4,8 @@ import Category from '../FeaturedProducts'
 import LatestProducts from '../LatestProducts'
 import LeatestBlog from '../LatestBlog'
 import Offer from '../Offer'
+import Unique from '../Unique'
+import DiscountItem from '../Discount'
 
 
 const Home = () => {
@@ -13,7 +15,9 @@ const Home = () => {
       <Category/>
       <LatestProducts/>
       <Offer/>
+      <Unique/>
       <LeatestBlog/>
+      <DiscountItem/>
   
     </div>
   )
