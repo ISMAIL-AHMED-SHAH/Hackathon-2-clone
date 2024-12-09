@@ -10,10 +10,15 @@ const Navbar = () => {
     <div className="w-full border-b-2 border-gray-300 bg-white py-4 shadow-sm">
       <div className="container mx-auto px-6 flex justify-between items-center max-w-7xl">
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-black">Hekto</h1>
+        <Link href="/" passHref>
+          <h1 className="text-2xl font-bold text-black cursor-pointer">
+            Hekto
+          </h1>
+        </Link>
 
         {/* Navigation Links */}
         <div className="hidden md:flex gap-8 font-medium text-gray-800">
+          <Link href="/" passHref>
           <select
             className="text-sm font-normal text-pink-400 hover:text-black"
             name="Home"
@@ -21,11 +26,15 @@ const Navbar = () => {
           >
             <option value="Home">Home</option>
           </select>
-          <Link className="text-sm font-normal hover:text-black" href="#">
+          </Link>
+          <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
             Pages
           </Link>
-          <Link className="text-sm font-normal hover:text-black" href="#">
+          <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
             Products
+          </Link>
+          <Link className="text-sm font-normal hover:text-black" href="/pages/shippinginfo">
+            Shipping Info
           </Link>
           <Link className="text-sm font-normal hover:text-black" href="#">
             Blog
@@ -55,45 +64,48 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         <Sheet>
-  <SheetTrigger>
-    <Button variant={"outline"} size={"icon"} className="block md:hidden rounded-xl">
-      <Menu />
-    </Button>
-  </SheetTrigger>
-  <SheetContent>
-    <SheetHeader>
-      <SheetTitle>Hekto</SheetTitle>
-    </SheetHeader>
-    <div className="flex flex-col gap-6 mt-6">
-      <Link className="text-sm font-normal hover:text-black" href="#">
-        Pages
-      </Link>
-      <Link className="text-sm font-normal hover:text-black" href="#">
-        Products
-      </Link>
-      <Link className="text-sm font-normal hover:text-black" href="#">
-        Blog
-      </Link>
-      <Link className="text-sm font-normal hover:text-black" href="#">
-        Shop
-      </Link>
-      <Link className="text-sm font-normal hover:text-black" href="#">
-        Contact
-      </Link>
-    </div>
-    <div className="mt-4">
-      <div className="relative">
-        <input
-          placeholder="Search Products"
-          className="bg-[#F5F5F5] rounded"
-        />
-        <Search className="absolute right-2 top-2" />
-      </div>
-    </div>
-  </SheetContent>
-</Sheet>
-
+          <SheetTrigger>
+            <Button variant={"outline"} size={"icon"} className="block md:hidden rounded-xl">
+              <Menu />
+            </Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Hekto</SheetTitle>
+            </SheetHeader>
+            <div className="flex flex-col gap-6 mt-6">
+              <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
+                Pages
+              </Link>
+              <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
+                Products
+              </Link>
+              <Link className="text-sm font-normal hover:text-black" href="/pages/shippinginfo">
+                Shipping Info
+              </Link>
+              <Link className="text-sm font-normal hover:text-black" href="#">
+                Blog
+              </Link>
+              <Link className="text-sm font-normal hover:text-black" href="#">
+                Shop
+              </Link>
+              <Link className="text-sm font-normal hover:text-black" href="#">
+                Contact
+              </Link>
+            </div>
+            <div className="mt-4">
+              <div className="relative">
+                <input
+                  placeholder="Search Products"
+                  className="bg-[#F5F5F5] rounded"
+                />
+                <Search className="absolute right-2 top-2" />
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </div>
   );
