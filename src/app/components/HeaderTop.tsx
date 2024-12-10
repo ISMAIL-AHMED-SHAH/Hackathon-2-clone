@@ -32,7 +32,7 @@ const HeaderTop = () => {
       <div className="flex items-center gap-6">
         {/* Language Selector */}
         <select
-          className="text-white text-[16px] bg-transparent outline-none  py-2 hover:bg-purple-600"
+          className="text-white text-[16px] bg-transparent outline-none py-2 hover:bg-purple-600"
           name="language"
           id="language"
         >
@@ -42,7 +42,7 @@ const HeaderTop = () => {
         </select>
         {/* Currency Selector */}
         <select
-          className="text-white text-[16px] bg-transparent outline-none  py-2 hover:bg-purple-600"
+          className="text-white text-[16px] bg-transparent outline-none py-2 hover:bg-purple-600"
           name="currency"
           id="currency"
         >

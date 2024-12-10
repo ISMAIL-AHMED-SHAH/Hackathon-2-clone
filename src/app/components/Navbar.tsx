@@ -36,13 +36,13 @@ const Navbar = () => {
           <Link className="text-sm font-normal hover:text-black" href="/pages/shippinginfo">
             Shipping Info
           </Link>
-          <Link className="text-sm font-normal hover:text-black" href="#">
+          <Link className="text-sm font-normal hover:text-black" href="/blog">
             Blog
           </Link>
-          <Link className="text-sm font-normal hover:text-black" href="#">
+          <Link className="text-sm font-normal hover:text-black" href="/faq">
             Shop
           </Link>
-          <Link className="text-sm font-normal hover:text-black" href="#">
+          <Link className="text-sm font-normal hover:text-black" href="/contact">
             Contact
           </Link>
         </div>
@@ -85,13 +85,13 @@ const Navbar = () => {
               <Link className="text-sm font-normal hover:text-black" href="/pages/shippinginfo">
                 Shipping Info
               </Link>
-              <Link className="text-sm font-normal hover:text-black" href="#">
+              <Link className="text-sm font-normal hover:text-black" href="/BlogPage">
                 Blog
               </Link>
               <Link className="text-sm font-normal hover:text-black" href="#">
                 Shop
               </Link>
-              <Link className="text-sm font-normal hover:text-black" href="#">
+              <Link className="text-sm font-normal hover:text-black" href="/contact">
                 Contact
               </Link>
             </div>

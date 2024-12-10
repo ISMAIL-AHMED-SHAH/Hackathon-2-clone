@@ -93,7 +93,7 @@ function HeroSection() {
         </div>
 
         {/* Responsive Discount Badge */}
-        <div className="absolute top-4 md:top-6 right-4 md:right-6 bg-blue-500 text-white text-sm md:text-lg font-bold px-4 py-2 md:px-8 md:py-12 rounded-full">
+        <div className="absolute top-4 md:top-6 right-4 md:right-6 bg-blue-400 text-white text-sm md:text-lg font-bold px-4 py-2 md:px-8 md:py-12 rounded-full">
           50% Off
         </div>
       </div>
