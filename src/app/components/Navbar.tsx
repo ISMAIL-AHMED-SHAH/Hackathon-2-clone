@@ -4,10 +4,12 @@ import { FaSearch } from "react-icons/fa";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Menu, Search } from 'lucide-react';
+import DropdownMenu from './DropdownMenu';
+
 
 const Navbar = () => {
   return (
-    <div className="w-full border-b-2 border-gray-300 bg-white py-4 shadow-sm">
+    <div className="w-full border-b-2 border-gray-300 bg-white py-4 shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-6 flex justify-between items-center max-w-7xl">
         {/* Logo */}
         <Link href="/" passHref>
@@ -19,17 +21,17 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div className="hidden md:flex gap-8 font-medium text-gray-800">
           <Link href="/" passHref>
-          <select
-            className="text-sm font-normal text-pink-400 hover:text-black"
-            name="Home"
-            id="Home"
-          >
-            <option value="Home">Home</option>
-          </select>
+            <select
+              className="text-sm font-normal text-pink-400 hover:text-black"
+              name="Home"
+              id="Home"
+            >
+              <option value="Home">Home</option>
+            </select>
           </Link>
-          <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
-            Pages
-          </Link>
+          <div>
+            <DropdownMenu />
+          </div>
           <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
             Products
           </Link>
@@ -55,7 +57,7 @@ const Navbar = () => {
               type="text"
               className="px-2 py-1 text-sm text-gray-700 outline-none"
             />
-            {/* Avoid Nested Buttons */}
+            
             <Button className="p-4 bg-pink-400 hover:bg-pink-500">
               <span className="flex items-center justify-center">
                 <FaSearch size={26} className="text-white bg-pink-500" />
@@ -111,4 +113,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar
