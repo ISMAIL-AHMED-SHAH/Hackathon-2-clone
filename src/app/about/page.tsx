@@ -25,7 +25,7 @@ const AboutPage = () => {
         </div>
         <div>
           <Image
-            src="/images/about.png"
+            src="/about (2).png"
             alt="Ecommerce Meeting"
             width={500}
             height={500}

@@ -20,7 +20,7 @@ const LatestProducts: React.FC = () => {
   });
 
   return (
-    <section className="py-20 bg-white"> {/* Increased top and bottom padding */}
+    <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Title */}
         <h2 className="text-3xl font-bold text-blue-800 text-center mb-8">
@@ -48,48 +48,36 @@ const LatestProducts: React.FC = () => {
           {products.map((product, index) => (
             <div
               key={index}
-              className="bg-white shadow-lg rounded-lg p-4 text-center border border-gray-200 relative"
-              style={{ minHeight: "300px" }} // Ensures consistent card height
+              className="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 relative"
             >
               {/* Product Image */}
-              <div className="w-full h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+              <div className="w-full h-56">
                 <img
                   src={productImages[index % productImages.length]}
                   alt={`Product ${index + 1}`}
-                  className="object-cover w-full h-full rounded-lg"
+                  className="object-cover w-full h-full"
                 />
               </div>
 
               {/* Product Info */}
-              <h3 className="text-gray-800 font-semibold mb-2">
-                {product.name}
-              </h3>
-              <div className="text-gray-500">
-                <span className="text-red-500 line-through mr-2">
-                  ${product.originalPrice.toFixed(2)}
-                </span>
-                <span>${product.price.toFixed(2)}</span>
+              <div className="p-4 text-center">
+                <h3 className="text-gray-800 font-semibold text-sm mb-1">
+                  {product.name}
+                </h3>
+                <div className="text-gray-500 text-sm">
+                  <span className="text-red-500 line-through mr-2">
+                    ${product.originalPrice.toFixed(2)}
+                  </span>
+                  <span>${product.price.toFixed(2)}</span>
+                </div>
               </div>
 
               {/* Sale Badge */}
               {product.sale && (
-                <div className="absolute top-4 right-4 bg-pink-500 text-white text-xs px-2 py-1 rounded">
+                <div className="absolute top-4 left-4 bg-pink-500 text-white text-xs px-2 py-1 rounded">
                   Sale
                 </div>
               )}
-
-              {/* Hover Icons */}
-              <div className="flex justify-center space-x-4 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
-                  ❤️
-                </Button>
-                <Button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
-                  🛒
-                </Button>
-                <Button className="bg-gray-100 p-2 rounded-full hover:bg-pink-100">
-                  🔍
-                </Button>
-              </div>
             </div>
           ))}
         </div>

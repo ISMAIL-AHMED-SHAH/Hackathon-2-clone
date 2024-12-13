@@ -6,6 +6,9 @@ import LeatestBlog from '../LatestBlog'
 import Offer from '../Offer'
 import Unique from '../Unique'
 import DiscountItem from '../Discount'
+import TopCategory from '../TopCategory'
+import TrendingProducts from '../Trending'
+import Update from '../Update'
 
 
 const Home = () => {
@@ -16,8 +19,11 @@ const Home = () => {
       <LatestProducts/>
       <Offer/>
       <Unique/>
-      <LeatestBlog/>
+      <TrendingProducts/>
       <DiscountItem/>
+      <TopCategory/>
+      <Update/>
+      <LeatestBlog/>
   
     </div>
   )

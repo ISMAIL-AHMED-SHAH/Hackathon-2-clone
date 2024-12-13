@@ -7,25 +7,25 @@ const FeaturedProducts = () => {
       name: "Cantilever chair",
       code: "Y523201",
       price: "$42.00",
-      image: "/chair1.png", // Replace with actual image paths
+      image: "/chair13.png",
     },
     {
       name: "Cantilever chair",
       code: "Y523201",
       price: "$42.00",
-      image: "/chair2.png",
+      image: "/image 1.png",
     },
     {
       name: "Cantilever chair",
       code: "Y523201",
       price: "$42.00",
-      image: "/chair3.png",
+      image: "/image 1169.png",
     },
     {
       name: "Cantilever chair",
       code: "Y523201",
       price: "$42.00",
-      image: "/chair4.png",
+      image: "/image 3.png",
     },
   ];
 
@@ -39,9 +39,13 @@ const FeaturedProducts = () => {
           {products.map((product, index) => (
             <div
               key={index}
-              className="relative border rounded-xl p-4 bg-white shadow-md hover:shadow-lg transition duration-300"
+              className="relative border rounded-xl p-4 bg-white shadow-md hover:shadow-lg transition duration-300 group"
               style={{ width: "270px", height: "361px" }}
             >
+              {/* Hover circle effect */}
+              <div className="absolute inset-0 bg-purple-500 rounded-full opacity-0 group-hover:opacity-20 transition duration-300 pointer-events-none"></div>
+
+              {/* Product image */}
               <div className="w-full h-40 flex items-center justify-center overflow-hidden rounded-lg">
                 <img
                   src={product.image}
@@ -49,8 +53,10 @@ const FeaturedProducts = () => {
                   className="object-contain"
                 />
               </div>
-              <div className="mt-4 text-center">
-                <h3 className="text-lg font-semibold text-gray-800">
+
+              {/* Product details */}
+              <div className="mt-4 text-center z-10 relative">
+                <h3 className="text-lg font-semibold text-gray-800 group-hover:text-purple-600">
                   {product.name}
                 </h3>
                 <p className="text-sm text-gray-500">{product.code}</p>
@@ -58,11 +64,11 @@ const FeaturedProducts = () => {
                   {product.price}
                 </p>
               </div>
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-purple-500 text-white opacity-0 hover:opacity-100 flex items-center justify-center rounded-xl transition duration-300">
-                <Button className="py-2 px-4 bg-white text-purple-500 font-bold rounded-md shadow-md">
-                  <span>View Details
-                    </span>
+
+              {/* View Details Button */}
+              <div className="absolute inset-x-0 bottom-4 flex justify-center z-10">
+                <Button className="py-2 px-4 bg-white text-purple-500 font-bold rounded-md shadow-md hover:bg-purple-500 hover:text-white transition">
+                  View Details
                 </Button>
               </div>
             </div>
@@ -73,4 +79,4 @@ const FeaturedProducts = () => {
   );
 };
 
-export default FeaturedProducts
+export default FeaturedProducts;
