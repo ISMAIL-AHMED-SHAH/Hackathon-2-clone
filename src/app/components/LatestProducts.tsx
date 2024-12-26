@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import React from "react";
 
 const LatestProducts: React.FC = () => {
@@ -52,10 +53,12 @@ const LatestProducts: React.FC = () => {
             >
               {/* Product Image */}
               <div className="w-full h-56">
-                <img
+                <Image
                   src={productImages[index % productImages.length]}
                   alt={`Product ${index + 1}`}
                   className="object-cover w-full h-full"
+                  width={365}
+                  height={306}
                 />
               </div>
 

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import React from "react";
 
 const FeaturedProducts = () => {
@@ -47,10 +48,12 @@ const FeaturedProducts = () => {
 
               {/* Product image */}
               <div className="w-full h-40 flex items-center justify-center overflow-hidden rounded-lg">
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
                   className="object-contain"
+                  width={178}
+                  height={178}
                 />
               </div>
 

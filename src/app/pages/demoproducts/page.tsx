@@ -1,5 +1,6 @@
 import React from 'react'
 import demoProductData from './demoproductdata'
+import Image from 'next/image'
 
 const DemoProduct = () => {
   return (
@@ -9,7 +10,7 @@ const DemoProduct = () => {
             return <div>
                         <div className='flex gap-4 mb-4 items-center'>
                         <div>
-                            <img src={item.pic} alt="" />
+                            <Image src={item.pic} alt="" />
                         </div>
                         <div className='flex items-center justify-between '>
                             <div>

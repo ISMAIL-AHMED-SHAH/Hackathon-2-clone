@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const DiscountItem: React.FC = () => {
@@ -41,10 +42,12 @@ const DiscountItem: React.FC = () => {
 
         {/* Right Content */}
         <div className="flex-1">
-          <img
+          <Image
             src="/chair.png"
             alt="Chair"
             className="rounded-full shadow-md w-full max-w-sm mx-auto bg-pink-100"
+            width={699}
+            height={597}
           />
         </div>
       </div>

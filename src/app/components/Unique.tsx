@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Unique: React.FC = () => {
@@ -8,10 +9,12 @@ const Unique: React.FC = () => {
         <div className="relative flex flex-wrap md:flex-nowrap items-center gap-10 px-6 py-10 md:py-16">
           {/* Product Image */}
           <div className="flex-1 flex justify-center md:justify-end relative">
-            <img
+            <Image
               src="/sofa.png"
               alt="Product"
               className="rounded-lg shadow-md w-full max-w-md md:max-w-lg object-contain"
+              width={558}
+              height={550}
             />
             {/* Overlay for small screens */}
             <div className="absolute inset-0 flex flex-col justify-center items-start p-6 md:hidden bg-gradient-to-t from-black/60 to-transparent rounded-lg">
