@@ -7,7 +7,7 @@ const shoplist = [
   {
     id: 1,
     name: "Accumsan tincidunt",
-    image: "/images/shoplist1.png",
+    image: "/shoplist1.png",
     price: "$120.00",
     oldPrice: "$150.00",
     description: "Consectetur adipiscing elit.",
@@ -17,7 +17,7 @@ const shoplist = [
   {
     id: 2,
     name: "In nulla",
-    image: "/images/shoplist2.png",
+    image: "/shoplist2.png",
     price: "$99.00",
     oldPrice: "$130.00",
     description: "Magna in est adipiscing in phasellus non in justo.",
@@ -27,7 +27,7 @@ const shoplist = [
   {
     id: 3,
     name: "Vel sem",
-    image: "/images/shoplist3.png",
+    image: "/shoplist3.png",
     price: "$99.00",
     oldPrice: "$130.00",
     description: "Lorem ipsum dolor sit amet.",
@@ -36,7 +36,7 @@ const shoplist = [
   }, {
     id: 4,
     name: "Porttitor cum",
-    image: "/images/shoplist4.png",
+    image: "/shoplist4.png",
     price: "$99.00",
     oldPrice: "$130.00",
     description: "Lorem ipsum dolor sit amet.",
@@ -45,7 +45,7 @@ const shoplist = [
   }, {
     id: 5,
     name: "Nunc in",
-    image: "/images/shoplist5.png",
+    image: "/shoplist5.png",
     price: "$99.00",
     oldPrice: "$130.00",
     description: "Lorem Magna in est adipiscing.",
@@ -54,7 +54,7 @@ const shoplist = [
   }, {
     id: 6,
     name: "Vitae facilisis",
-    image: "/images/shoplist6.png",
+    image: "/shoplist6.png",
     price: "$99.00",
     oldPrice: "$130.00",
     description: "consectetur adipiscing elit. Magna in.",
@@ -63,7 +63,7 @@ const shoplist = [
   }, {
     id: 7,
     name: "Curabitur lectus",
-    image: "/images/shoplist7.png",
+    image: "/shoplist7.png",
     price: "$99.00",
     oldPrice: "$130.00",
     description: "Lorem ipsum dolor sit amet, consectetur.",
