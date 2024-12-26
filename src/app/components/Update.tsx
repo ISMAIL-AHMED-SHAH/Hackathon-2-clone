@@ -28,7 +28,7 @@ function Update() {
       <div className="w-full py-12">
         <div className="max-w-screen-xl mx-auto flex justify-center">
           <Image
-            src="/image 1174.png"
+            src="/image1174.png"
             alt="Logos"
             width={800} 
             height={100} 

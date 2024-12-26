@@ -159,8 +159,8 @@ const ShopList = () => {
                 <Image
                   src={product.image}
                   alt={product.name}
-                  width={500}
-                  height={400}
+                  width={313}
+                  height={217}
                   className="w-full h-48 object-cover rounded-lg"
                 />
               </div>
@@ -222,6 +222,17 @@ const ShopList = () => {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+      <div className="w-full py-12">
+        <div className="max-w-screen-xl mx-auto flex justify-center">
+          <Image
+            src="/image1174.png"
+            alt="Logos"
+            width={800} 
+            height={100} 
+            className="object-contain"
+          />
         </div>
       </div>
     </div>
