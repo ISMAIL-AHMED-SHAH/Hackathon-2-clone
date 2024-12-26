@@ -107,7 +107,7 @@ function ContactUs() {
 
           <div>
       <Image
-        src="/images/connect.png" 
+        src="/connect.png" 
         alt="Connect"
         width={500} 
         height={500} 

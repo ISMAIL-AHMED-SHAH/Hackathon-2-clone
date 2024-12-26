@@ -41,7 +41,7 @@ const Navbar = () => {
           <Link className="text-sm font-normal hover:text-black" href="/blog">
             Blog
           </Link>
-          <Link className="text-sm font-normal hover:text-black" href="/faq">
+          <Link className="text-sm font-normal hover:text-black" href="/shop">
             Shop
           </Link>
           <Link className="text-sm font-normal hover:text-black" href="/contact">
@@ -78,24 +78,21 @@ const Navbar = () => {
               <SheetTitle>Hekto</SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-6 mt-6">
-              <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
-                Pages
-              </Link>
-              <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
-                Products
-              </Link>
-              <Link className="text-sm font-normal hover:text-black" href="/pages/shippinginfo">
-                Shipping Info
-              </Link>
-              <Link className="text-sm font-normal hover:text-black" href="/BlogPage">
-                Blog
-              </Link>
-              <Link className="text-sm font-normal hover:text-black" href="#">
-                Shop
-              </Link>
-              <Link className="text-sm font-normal hover:text-black" href="/contact">
-                Contact
-              </Link>
+            <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
+            Products
+          </Link>
+          <Link className="text-sm font-normal hover:text-black" href="/pages/shippinginfo">
+            Shipping Info
+          </Link>
+          <Link className="text-sm font-normal hover:text-black" href="/blog">
+            Blog
+          </Link>
+          <Link className="text-sm font-normal hover:text-black" href="/shop">
+            Shop
+          </Link>
+          <Link className="text-sm font-normal hover:text-black" href="/contact">
+            Contact
+          </Link>
             </div>
             <div className="mt-4">
               <div className="relative">

@@ -33,11 +33,11 @@ const LatestProducts: React.FC = () => {
           {categories.map((category, index) => (
             <Button
               key={index}
-              className={`text-sm font-medium ${
+              className={`bg-white text-sm font-medium ${
                 index === 0
                   ? "text-pink-500 border-b-2 border-pink-500"
                   : "text-gray-500"
-              } hover:text-pink-500`}
+              } hover:text-pink-500 hover:bg-blue-300`}
             >
               {category}
             </Button>

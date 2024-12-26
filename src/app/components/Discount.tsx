@@ -7,10 +7,8 @@ const DiscountItem: React.FC = () => {
       <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-10 px-6">
         {/* Left Content */}
         <div className="flex-1">
+          <h2 className="text-[#3F509E] text-4xl font-bold text-center mb-8">Discount Item</h2>
           <div className="text-center mb-6">
-            <h2 className="text-purple-900 text-3xl font-bold mb-2">
-              Discount Item
-            </h2>
             <div className="flex justify-center items-center space-x-3 text-sm text-gray-500">
               <span className="relative text-pink-400 cursor-pointer">
                 <span className="underline">Wood Chair</span> <span>•</span>
