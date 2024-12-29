@@ -27,6 +27,7 @@ const DropdownMenu = () => {
         <option value="/contact">Contact</option>
         <option value="/about">About</option>
         <option value="/faq">FAQ</option>
+        <option value="/signup">Sign-Up</option>
       </select>
     </div>
   );
