@@ -11,7 +11,7 @@ const DemoProduct = () => {
             <div key={item.id || index}>
               <div className='flex gap-4 mb-4 items-center'>
                 <div>
-                  <Image src={item.pic} alt="" />
+                  <Image src={item.pic} alt="image" width={100} height={100} />
                 </div>
                 <div className='flex items-center justify-between'>
                   <div>
