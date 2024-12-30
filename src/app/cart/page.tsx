@@ -25,7 +25,7 @@ const initialCartProducts: CartItem[] = [
     quantity: 2,
     color: "Red",
     size: "M",
-    image: "/cart1.png",
+    image: "/images/cart1.png",
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const initialCartProducts: CartItem[] = [
     quantity: 1,
     color: "Blue",
     size: "L",
-    image: "/cart2.png",
+    image: "/images/cart2.png",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const initialCartProducts: CartItem[] = [
     quantity: 1,
     color: "Green",
     size: "S",
-    image: "/cart3.png",
+    image: "/images/cart3.png",
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ const initialCartProducts: CartItem[] = [
     quantity: 2,
     color: "Yellow",
     size: "M",
-    image: "/cart4.png",
+    image: "/images/cart4.png",
   },
   {
     id: 5,
@@ -61,7 +61,7 @@ const initialCartProducts: CartItem[] = [
     quantity: 3,
     color: "Black",
     size: "L",
-    image: "/cart5.png",
+    image: "/images/cart5.png",
   },
 
 ];
@@ -96,13 +96,13 @@ const Cart = () => {
 
   return (
     <>
- 
-      <div className="p-6 lg:p-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <div className="p-6 m-10 lg:p-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2">
-          <h2 className="text-2xl font-bold mb-6 text-[#1D3178]">Your Cart</h2>
+          <h2 className="text-2xl font-bold mb-8 m-6 text-[#1D3178]">Your Cart</h2>
           {cartItems.length > 0 ? (
-            <div className="space-y-6">
+            <div className="space-y-10">
               {cartItems.map((item) => (
                 <div
                   key={item.id}
@@ -131,7 +131,7 @@ const Cart = () => {
                       onChange={(e) =>
                         updateQuantity(item.id, Number(e.target.value))
                       }
-                      className="w-12 px-2 py-1 border rounded-md text-center"
+                      className="w-12 px-2 py-1 border rounded-sm text-center"
                       min="1"
                     />
                     <p className="font-bold text-[#1D3178]">
