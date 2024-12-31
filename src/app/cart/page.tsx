@@ -1,11 +1,5 @@
-'use client';
-
-import React, { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 
-
-// Define types for Cart Item
 type CartItem = {
   id: number;
   name: string;
@@ -16,7 +10,7 @@ type CartItem = {
   image: string;
 };
 
-// Mock cartproducts data
+
 const initialCartProducts: CartItem[] = [
   {
     id: 1,
@@ -25,7 +19,7 @@ const initialCartProducts: CartItem[] = [
     quantity: 2,
     color: "Red",
     size: "M",
-    image: "/images/cart1.png",
+    image: "/cart1.png",
   },
   {
     id: 2,
@@ -34,7 +28,7 @@ const initialCartProducts: CartItem[] = [
     quantity: 1,
     color: "Blue",
     size: "L",
-    image: "/images/cart2.png",
+    image: "/cart2.png",
   },
   {
     id: 3,
@@ -43,7 +37,7 @@ const initialCartProducts: CartItem[] = [
     quantity: 1,
     color: "Green",
     size: "S",
-    image: "/images/cart3.png",
+    image: "/cart3.png",
   },
   {
     id: 4,
@@ -52,7 +46,7 @@ const initialCartProducts: CartItem[] = [
     quantity: 2,
     color: "Yellow",
     size: "M",
-    image: "/images/cart4.png",
+    image: "/cart4.png",
   },
   {
     id: 5,
@@ -61,137 +55,111 @@ const initialCartProducts: CartItem[] = [
     quantity: 3,
     color: "Black",
     size: "L",
-    image: "/images/cart5.png",
+    image: "/cart5.png",
   },
-
 ];
 
-const Cart = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(initialCartProducts);
-
-  const updateQuantity = (id: number, newQuantity: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id
-          ? { ...item, quantity: newQuantity > 0 ? newQuantity : 1 }
-          : item
-      )
-    );
-  };
-
-  const calculateTotal = () => {
-    return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-  };
-
-  const clearCart = () => {
-    setCartItems([]);
-  };
-
-  const resetCart = () => {
-    setCartItems(initialCartProducts);
-  };
-
+export default function ShoppingCart() {
   return (
-    <>
+    <div className="bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">Shopping Cart</h1>
+        <p className="text-gray-500 text-sm mb-10">
+          Home &gt; Pages &gt; <span className="text-pink-600">Shopping Cart</span>
+        </p>
 
-      <div className="p-6 m-10 lg:p-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Cart Items */}
-        <div className="lg:col-span-2">
-          <h2 className="text-2xl font-bold mb-8 m-6 text-[#1D3178]">Your Cart</h2>
-          {cartItems.length > 0 ? (
-            <div className="space-y-10">
-              {cartItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md"
-                >
-                  <div className="flex items-center space-x-4">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      width={80}
-                      height={80}
-                      className="w-20 h-20 rounded-lg object-cover"
-                    />
-                    <div>
-                      <p className="font-semibold text-[#1D3178]">{item.name}</p>
-                      <p className="text-sm text-gray-500">
-                        Color: {item.color}, Size: {item.size}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-6">
-                    <p className="text-[#1D3178]">${item.price.toFixed(2)}</p>
-                    <input
-                      type="number"
-                      value={item.quantity}
-                      onChange={(e) =>
-                        updateQuantity(item.id, Number(e.target.value))
-                      }
-                      className="w-12 px-2 py-1 border rounded-sm text-center"
-                      min="1"
-                    />
-                    <p className="font-bold text-[#1D3178]">
-                      ${(item.price * item.quantity).toFixed(2)}
-                    </p>
-                  </div>
-                </div>
-              ))}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Cart Items */}
+          <div className="lg:col-span-2">
+            <div className="overflow-x-auto">
+              <table className="min-w-full bg-white shadow rounded-lg">
+                <thead>
+                  <tr>
+                    <th className="text-left p-4 font-bold text-gray-700">Product</th>
+                    <th className="text-left p-4 font-bold text-gray-700">Price</th>
+                    <th className="text-left p-4 font-bold text-gray-700">Quantity</th>
+                    <th className="text-left p-4 font-bold text-gray-700">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {initialCartProducts.map((product) => (
+                    <tr key={product.id} className="border-t">
+                      <td className="p-4">
+                        <div className="flex items-center">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            width={83}
+                            height={87}
+                            className="w-12 h-12 rounded-md mr-4"
+                          />
+                          <div>
+                            <p className="text-gray-800 font-medium">{product.name}</p>
+                            <p className="text-gray-500 text-sm">Color: {product.color}</p>
+                            <p className="text-gray-500 text-sm">Size: {product.size}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="p-4">${product.price.toFixed(2)}</td>
+                      <td className="p-4">
+                        <input
+                          type="number"
+                          className="w-16 border rounded-md p-2"
+                          defaultValue={product.quantity}
+                        />
+                      </td>
+                      <td className="p-4">${(product.price * product.quantity).toFixed(2)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          ) : (
-            <p className="text-[#1D3178] text-center mt-6">
-              Your cart is empty. Add some products!
-            </p>
-          )}
 
-          {/* Action Buttons */}
-          <div className="flex justify-between mt-6">
-            <button
-              onClick={resetCart}
-              className="px-4 py-2 bg-[#FB2E86] text-white rounded-md text-sm hover:bg-pink-600"
-            >
-              Update Cart
-            </button>
-            <button
-              onClick={clearCart}
-              className="px-4 py-2 bg-[#FB2E86] text-white rounded-md text-sm hover:bg-pink-600"
-            >
-              Clear Cart
-            </button>
+            <div className="flex justify-between mt-6">
+              <button className="bg-pink-500 text-white py-2 px-4 rounded-md">
+                Update Cart
+              </button>
+              <button className="bg-pink-500 text-white py-2 px-4 rounded-md">
+                Clear Cart
+              </button>
+            </div>
+          </div>
+
+          {/* Cart Totals */}
+          <div>
+            <div className="bg-white shadow rounded-lg p-6 mb-6">
+              <h2 className="text-xl font-bold text-gray-800 mb-4">Cart Totals</h2>
+              <p className="flex justify-between text-gray-700 mb-2">
+                <span>Subtotal:</span> <span>${initialCartProducts.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</span>
+              </p>
+              <button className="w-full bg-green-500 text-white py-2 px-4 rounded-md">
+                Proceed To Checkout
+              </button>
+            </div>
+            <div className="bg-white shadow rounded-lg p-6">
+                <h2 className="text-xl font-bold text-gray-800 mb-4">Calculate Shipping</h2>
+                <input
+                  type="text"
+                  placeholder="Bangladesh"
+                  className="w-full border rounded-md p-2 mb-4"
+                />
+                <input
+                  type="text"
+                  placeholder="Mirpur Dhaka - 1200"
+                  className="w-full border rounded-md p-2 mb-4"
+                />
+                <input
+                  type="text"
+                  placeholder="Postal Code"
+                  className="w-full border rounded-md p-2 mb-4"
+                />
+                <button className="w-full bg-pink-500 text-white py-2 px-4 rounded-md">
+                  Calculate Shipping
+                </button>
+              </div>
           </div>
         </div>
-
-        {/* Cart Totals */}
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-bold mb-4 text-[#1D3178]">Cart Totals</h2>
-          <p className="flex justify-between text-[#1D3178]">
-            <span>Subtotal:</span> <span>${calculateTotal().toFixed(2)}</span>
-          </p>
-          <p className="flex justify-between mb-4 text-[#1D3178]">
-            <span>Shipping:</span> <span>$15.00</span>
-          </p>
-          <p className="flex justify-between font-bold text-lg text-[#1D3178]">
-            <span>Total:</span>{" "}
-            <span>${(calculateTotal() + 15).toFixed(2)}</span>
-          </p>
-          <li>
-                <Link href="/checkout">
-            <button
-              type="submit"
-              className="w-full py-3 bg-[#FB2E86] text-white rounded-md font-semibold hover:bg-pink-600"
-            >
-              Proceed To Checkout
-            </button>
-            </Link>
-            </li>
-        </div>
       </div>
-
-    </>
+    </div>
   );
-};
-
-export default Cart;
+}
