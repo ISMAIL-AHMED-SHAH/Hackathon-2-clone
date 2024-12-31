@@ -127,17 +127,25 @@ export default function ShoppingCart() {
 
           {/* Cart Totals */}
           <div>
+          <h2 className="text-xl text-center font-bold text-gray-800 mb-4">Cart Totals</h2>
             <div className="bg-white shadow rounded-lg p-6 mb-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4">Cart Totals</h2>
+              
+              <div className='w-full h-[1.9px] bg-opacity-20'></div>
+              
               <p className="flex justify-between text-gray-700 mb-2">
                 <span>Subtotal:</span> <span>${initialCartProducts.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</span>
               </p>
+              <div className="w-full h-px bg-gray-400 my-4"></div>
+              <p className="flex justify-between text-gray-700 mb-2">
+                <span>Total :</span> <span>${initialCartProducts.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</span>
+              </p>
+              <div className="w-full h-px bg-gray-400 my-4"></div>
               <button className="w-full bg-green-500 text-white py-2 px-4 rounded-md">
                 Proceed To Checkout
               </button>
             </div>
+                <h2 className="text-xl text-center font-bold text-gray-800 mb-4">Calculate Shopping</h2>
             <div className="bg-white shadow rounded-lg p-6">
-                <h2 className="text-xl font-bold text-gray-800 mb-4">Calculate Shipping</h2>
                 <input
                   type="text"
                   placeholder="Bangladesh"
@@ -154,7 +162,7 @@ export default function ShoppingCart() {
                   className="w-full border rounded-md p-2 mb-4"
                 />
                 <button className="w-full bg-pink-500 text-white py-2 px-4 rounded-md">
-                  Calculate Shipping
+                  Calculate Shopping
                 </button>
               </div>
           </div>
