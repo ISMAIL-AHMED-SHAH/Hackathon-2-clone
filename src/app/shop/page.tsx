@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineEye } from "react-icons/ai";
 
 
+
 const shoplist = [
   {
     id: 1,
@@ -159,8 +160,8 @@ const ShopList = () => {
                 <Image
                   src={product.image}
                   alt={product.name}
-                  width={313}
-                  height={217}
+                  width={500}
+                  height={400}
                   className="w-full h-48 object-cover rounded-lg"
                 />
               </div>
@@ -222,17 +223,6 @@ const ShopList = () => {
               </div>
             </div>
           ))}
-        </div>
-      </div>
-      <div className="w-full py-12">
-        <div className="max-w-screen-xl mx-auto flex justify-center">
-          <Image
-            src="/image1174.png"
-            alt="Logos"
-            width={800} 
-            height={100} 
-            className="object-contain"
-          />
         </div>
       </div>
     </div>
