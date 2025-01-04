@@ -23,12 +23,12 @@ const DropdownMenu = () => {
         className="text-sm bg-transparent outline-none"
         onChange={handleNavigation}
       >
-        <option value="">Pages</option>
+        <option value="/">Pages</option>
         <option value="/contact">Contact</option>
         <option value="/about">About</option>
         <option value="/faq">FAQ</option>
         <option value="/login">Login</option>
-        <option value="/ordercompleted">Order Status</option>
+        <option value="/ordercompleted">Status</option>
       </select>
     </div>
   );

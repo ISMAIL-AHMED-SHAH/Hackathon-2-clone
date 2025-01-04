@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 
 import React from 'react';
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -70,9 +71,17 @@ const Footer = () => {
 
       {/* Copyright Section */}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 items-center w-4/5 mx-auto">
+      
         <p className="text-sm text-black opacity-60">©Webecy - All Rights Reserved</p>
         
+      {/* Social Media Icons */}
+      <div className="flex justify-center gap-4">
+                <FaFacebook className="bg-blue-900 text-white text-2xl rounded-full p-1" />
+                <FaInstagram className="bg-blue-900 text-white text-2xl rounded-full p-1" />
+                <FaTwitter className="bg-blue-900 text-white text-2xl rounded-full p-1" />
       </div>
+      </div>
+
     </footer>
   );
 };

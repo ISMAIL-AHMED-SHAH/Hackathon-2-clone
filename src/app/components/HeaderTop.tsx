@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { BsTelephoneForward } from 'react-icons/bs';
 import { FaRegEnvelope } from 'react-icons/fa';
@@ -11,21 +12,21 @@ const HeaderTop = () => {
       {/* Left Section */}
       <div className="flex items-center gap-6">
         {/* Email */}
-        <a
+        <Link
           href="mailto:mhhasanul@gmail.com"
           className="flex items-center gap-2 hover:text-gray-200"
         >
           <FaRegEnvelope />
           <span>mhhasanul@gmail.com</span>
-        </a>
+        </Link>
         {/* Phone */}
-        <a
+        <Link
           href="tel:1234567890"
           className="flex items-center gap-2 hover:text-gray-200"
         >
           <BsTelephoneForward />
           <span>(12345)67890</span>
-        </a>
+        </Link>
       </div>
 
       {/* Right Section */}
@@ -51,19 +52,20 @@ const HeaderTop = () => {
           <option value="PKR Rs">PKR</option>
         </select>
         {/* Login */}
-        <a href="/login" className="flex items-center gap-2 hover:text-gray-200">
+        <Link href="/login" className="flex items-center gap-2 hover:text-gray-200">
           <span>Login</span>
+          
           <FiUser size={26} className="cursor-pointer"/>
-        </a>
+        </Link>
         {/* Wishlist */}
-        <a href="/wishlist" className="flex items-center gap-2 hover:text-gray-200">
+        <Link href="/wishlist" className="flex items-center gap-2 hover:text-gray-200">
           <span>Wishlist</span>
           <IoIosHeartEmpty size={26} className="cursor-pointer"/>
-        </a>
+        </Link>
         {/* Cart */}
-        <a href="/cart" className="flex items-center hover:text-gray-200">
+        <Link href="/cart" className="flex items-center hover:text-gray-200">
           <LuShoppingCart size={26} className="cursor-pointer"/>
-        </a>
+        </Link>
       </div>
     </div>
   );

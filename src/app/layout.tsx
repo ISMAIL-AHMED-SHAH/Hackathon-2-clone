@@ -26,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={josefinSans.variable}>
       <body className="antialiased">
-      <main className="mx-auto my-3 px-2 lg:px-1 max-w-7xl">
         <HeaderTop />
         <Navbar />
+      <main className="mx-auto my-3 px-2 lg:px-1 max-w-7xl">
         {children}
         </main>
         <Footer />
