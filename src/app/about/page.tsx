@@ -65,31 +65,61 @@ const AboutPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="my-16 text-center">
-        <h2 className="text-3xl font-bold mb-8">Our Client Say!</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { name: "Selina Gomez", image: "/images/client1.png" },
-            { name: "John Doe", image: "/images/client2.png" },
-            { name: "Emma Watson", image: "/images/client3.png" },
-          ].map((client, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <Image
-                src={client.image}
-                alt={client.name}
-                width={500}
-                height={500}
-                className="w-24 h-24 rounded-full object-cover shadow-md mb-4"
+      <div className="bg-[#fbfbff] w-full h-auto lg:h-[400px] 2xl:h-[503px] flex items-center justify-center mx-auto my-10 md:my-20  border-b-[1px] border-b-yellow-600">
+        <div className="">
+          <h1 className="text-center text-black font-bold text-2xl lg:text-[42px] lg:leading-[25.6px]">
+            Our Client Say!
+          </h1>
+
+          <div className="my-5 flex gap-3 justify-center ">
+            <Image
+              src={"/client1.jpeg"}
+              alt="client1"
+              height={55}
+              width={55}
+              className="object-cover h-[55px] w-[55px]"
+            />
+            <Image
+              src={"/client-2.jpg"}
+              alt="client2"
+              height={59}
+              width={55}
+              className="object-cover h-[59px] w-[55px]"
+            />
+            <Image
+              src={"/client-3.jpeg"}
+              alt="client3"
+              height={55}
+              width={55}
+              className="object-cover h-[55px] w-[55px]"
+            />
+          </div>
+
+          <div className="">
+            <h3 className="text-[18px] leading-[25.6px] text-gray-900 text-center font-semibold">
+              Selina Gomez
+            </h3>
+            <p className="my-1 text-[#8a8fb9] text-center">
+              Ceo At Webecy Digital{" "}
+            </p>
+
+            <p className="my-4 text-[#8a8fb9] mx-auto flex justify-center font-semibold text-[16px] leading-[25.4px] text-center lg:max-w-[689px]">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non duis
+              ultrices quam vel dui sollicitudin aliquet id arcu. Nam vitae a
+              enim nunc, sed sapien egestas ac nam. Tristique ultrices dolor
+              aliquam lacus volutpat praesent.
+            </p>
+            <div className="flex justify-center items-center py-3">
+            <Image
+              src={"/slide.png"}
+              alt="client3"
+              height={3}
+              width={73}
               />
-              <p className="text-[#151875] font-semibold">{client.name}</p>
-            </div>
-          ))}
+              </div>
+          </div>
         </div>
-        <p className="mt-6 text-gray-600">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non odio
-          eleifend nisl sollicitudin aliquet ut non felis.
-        </p>
-      </section>
+      </div>
     </div>
 
     </>
