@@ -9,14 +9,12 @@ const DropdownMenu = () => {
   const handleNavigation = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
     if (selectedValue) {
-      router.push(selectedValue); // Navigate to the selected page
+      router.push(selectedValue);
     }
   };
 
   return (
     <div className="flex items-center space-x-4">
-      {/* Direct Link */}
-
 
       {/* Dropdown */}
       <select

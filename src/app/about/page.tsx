@@ -6,8 +6,31 @@ const AboutPage = () => {
     <>
 
     <div className="px-6 lg:px-20 py-10 font-sans text-[#151875]">
+    {/* Header Section */}
+    <header className="bg-blue-50 py-16 mb-4 mt-0 w-full">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-bold text-blue-900">About Us</h1>
+          <p className="text-gray-500 mt-2">
+            <span>Home</span>
+            <span className="mx-2">.</span>
+            <span>Pages</span>
+            <span className="mx-2">.</span>
+            <span className="text-pink-500">About Us</span>
+          </p>
+        </div>
+      </header>
+
       {/* Hero Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
+      <section className="grid grid-cols-1 lg:grid-cols-2 items-center gap-2">
+      <div>
+          <Image
+            src="/about.png"
+            alt="Ecommerce Meeting"
+            width={500}
+            height={500}
+            className="rounded-lg shadow-md"
+          />
+        </div>
         <div>
           <h2 className="text-4xl font-bold mb-6">
             Know About Our Ecommerce Business, History
@@ -18,20 +41,12 @@ const AboutPage = () => {
             turpis non, bibendum porttitor nisi.
           </p>
           <Link href="/contact">
-            <button className="px-6 py-2 bg-pink-500 text-white font-semibold rounded-md shadow-md hover:bg-pink-600">
+            <button className="px-6 py-2 my-8 bg-pink-500 text-white font-semibold rounded-sm shadow-md hover:bg-pink-600">
               Contact Us
             </button>
           </Link>
         </div>
-        <div>
-          <Image
-            src="/about (2).png"
-            alt="Ecommerce Meeting"
-            width={500}
-            height={500}
-            className="rounded-lg shadow-md"
-          />
-        </div>
+        
       </section>
 
       {/* Features Section */}
