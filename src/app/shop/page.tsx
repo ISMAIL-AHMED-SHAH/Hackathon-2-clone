@@ -1,79 +1,96 @@
+import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineEye } from "react-icons/ai";
 
 
 
-const shoplist = [
-  {
-    id: 1,
-    name: "Accumsan tincidunt",
-    image: "/shoplist1.png",
-    price: "$120.00",
-    oldPrice: "$150.00",
-    description: "Consectetur adipiscing elit.",
-    rating: 4,
-    colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
-  },
-  {
-    id: 2,
-    name: "In nulla",
-    image: "/shoplist2.png",
-    price: "$99.00",
-    oldPrice: "$130.00",
-    description: "Magna in est adipiscing in phasellus non in justo.",
-    rating: 5,
-    colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
-  },
-  {
-    id: 3,
-    name: "Vel sem",
-    image: "/shoplist3.png",
-    price: "$99.00",
-    oldPrice: "$130.00",
-    description: "Lorem ipsum dolor sit amet.",
-    rating: 5,
-    colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
-  }, {
-    id: 4,
-    name: "Porttitor cum",
-    image: "/shoplist4.png",
-    price: "$99.00",
-    oldPrice: "$130.00",
-    description: "Lorem ipsum dolor sit amet.",
-    rating: 5,
-    colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
-  }, {
-    id: 5,
-    name: "Nunc in",
-    image: "/shoplist5.png",
-    price: "$99.00",
-    oldPrice: "$130.00",
-    description: "Lorem Magna in est adipiscing.",
-    rating: 5,
-    colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
-  }, {
-    id: 6,
-    name: "Vitae facilisis",
-    image: "/shoplist6.png",
-    price: "$99.00",
-    oldPrice: "$130.00",
-    description: "consectetur adipiscing elit. Magna in.",
-    rating: 5,
-    colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
-  }, {
-    id: 7,
-    name: "Curabitur lectus",
-    image: "/shoplist7.png",
-    price: "$99.00",
-    oldPrice: "$130.00",
-    description: "Lorem ipsum dolor sit amet, consectetur.",
-    rating: 5,
-    colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
-  },
-];
+// const shoplist = [
 
-const ShopList = () => {
+//   {
+//     id: 1,
+//     name: "Accumsan tincidunt",
+//     image: "/shoplist1.png",
+//     price: "$120.00",
+//     oldPrice: "$150.00",
+//     description: "Consectetur adipiscing elit.",
+//     rating: 4,
+//     colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
+//   },
+//   {
+//     id: 2,
+//     name: "In nulla",
+//     image: "/shoplist2.png",
+//     price: "$99.00",
+//     oldPrice: "$130.00",
+//     description: "Magna in est adipiscing in phasellus non in justo.",
+//     rating: 5,
+//     colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
+//   },
+//   {
+//     id: 3,
+//     name: "Vel sem",
+//     image: "/shoplist3.png",
+//     price: "$99.00",
+//     oldPrice: "$130.00",
+//     description: "Lorem ipsum dolor sit amet.",
+//     rating: 5,
+//     colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
+//   }, {
+//     id: 4,
+//     name: "Porttitor cum",
+//     image: "/shoplist4.png",
+//     price: "$99.00",
+//     oldPrice: "$130.00",
+//     description: "Lorem ipsum dolor sit amet.",
+//     rating: 5,
+//     colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
+//   }, {
+//     id: 5,
+//     name: "Nunc in",
+//     image: "/shoplist5.png",
+//     price: "$99.00",
+//     oldPrice: "$130.00",
+//     description: "Lorem Magna in est adipiscing.",
+//     rating: 5,
+//     colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
+//   }, {
+//     id: 6,
+//     name: "Vitae facilisis",
+//     image: "/shoplist6.png",
+//     price: "$99.00",
+//     oldPrice: "$130.00",
+//     description: "consectetur adipiscing elit. Magna in.",
+//     rating: 5,
+//     colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
+//   }, {
+//     id: 7,
+//     name: "Curabitur lectus",
+//     image: "/shoplist7.png",
+//     price: "$99.00",
+//     oldPrice: "$130.00",
+//     description: "Lorem ipsum dolor sit amet, consectetur.",
+//     rating: 5,
+//     colors: ["bg-[#DE9034]", "bg-[#FB2E86]", "bg-[#5E37FF]"]
+//   },
+// ];
+
+const ShopList = async () => {
+
+  const query = `*[_type == 'product']{
+        _id,
+        name,
+        category,
+        price,
+        description,
+        discountPercentage,
+        isFeaturedProduct,
+        "image": image.asset->url,
+}`
+const products = await client.fetch(query);
+// console.log(products);
+
+
  return (
  
   <>
@@ -150,7 +167,7 @@ const ShopList = () => {
       {/* Product List */}
       <div className="p-8">
         <div className="space-y-6">
-          {shoplist.map((product) => (
+          {products.map((product: any) => (
             <div
               key={product.id}
               className="flex flex-col lg:flex-row bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
@@ -160,7 +177,7 @@ const ShopList = () => {
                 <Image
                   src={product.image}
                   alt={product.name}
-                  width={500}
+                  width={300}
                   height={400}
                   className="w-full h-48 object-cover rounded-lg"
                 />
@@ -171,14 +188,14 @@ const ShopList = () => {
                 <div className="w-full flex justify-between items-center">
                   <h3 className="text-xl font-semibold">{product.name}</h3>
                   {/* Color Options */}
-                  <div className="mt-2 flex gap-1">
+                  {/* <div className="mt-2 flex gap-1">
                     {product.colors.map((color, index) => (
                       <span
                         key={index}
                         className={`w-3 h-3 ${color} rounded-full`}
                       ></span>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Price and Old Price */}
