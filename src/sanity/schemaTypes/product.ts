@@ -57,6 +57,11 @@ export default {
           list: [
             { title: 'Chair', value: 'Chair' },
             { title: 'Sofa', value: 'Sofa' },
+            { title: 'Appliances', value: 'Appliances' },
+            { title: 'Clothing', value: 'Clothing' },
+            { title: 'Bags', value: 'Bags' },
+            { title: 'Accessories', value: 'Accessories' },
+            { title: 'Beauty', value: 'Beauty' },
           ],
         },
         validation: (Rule: any) => Rule.required().error('Category is required'),

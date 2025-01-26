@@ -32,7 +32,7 @@ const Navbar = () => {
           <div>
             <DropdownMenu />
           </div>
-          <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
+          <Link className="text-sm font-normal hover:text-black" href="/products">
             Products
           </Link>
           <Link className="text-sm font-normal hover:text-black" href="/pages/shippinginfo">
