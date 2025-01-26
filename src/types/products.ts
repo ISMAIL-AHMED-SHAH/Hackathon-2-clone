@@ -3,6 +3,8 @@ export interface Product {
     name: string;
     _type: "product";
     price: number;
+    category: string;
+    discountPrice?: number;
     image: {
     asset: {
         _ref: string;
@@ -15,5 +17,9 @@ export interface Product {
     slug: {
         _type: "slug";
         current: string;
+    };
+    rating?: {
+        rate: number; 
+        count: number; 
     };
 }

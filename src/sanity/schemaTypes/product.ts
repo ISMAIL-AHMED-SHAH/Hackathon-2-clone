@@ -10,6 +10,16 @@ export default {
         validation: (Rule: any) => Rule.required().error('Name is required'),
       },
       {
+        name: 'slug',
+        type: 'slug',
+        title: 'Slug',
+        options: {
+          source: 'name',
+          maxLength: 96,
+        },
+
+      },
+      {
         name: 'image',
         type: 'image',
         title: 'Image',
@@ -18,12 +28,26 @@ export default {
         },
         description: 'Upload an image of the product.',
       },
+      { 
+        name: 'rating', 
+        title: 'Rating', 
+        type: 'object', 
+        fields: [
+            { name: 'rate', title: 'Rate', type: 'number' },
+            { name: 'count', title: 'Count', type: 'number' }
+        ] 
+    },
       {
         name: 'price',
         type: 'string',
         title: 'Price',
-        validation: (Rule: any) => Rule.required().error('Price is required'),
+
       },
+      {
+        name: "discountPrice",
+        type: "number",
+        title: "Discount Price",
+    },
       {
         name: 'description',
         type: 'text',
