@@ -20,3 +20,19 @@ export const relatedProductsQuery = groq`
     }
   }
 `;
+
+export const featuredproducts = `*[_type == "product"][0..3]{
+    _id,
+    name,
+    category,
+    price,
+    image {
+      asset -> {
+        url
+      }
+    },
+    slug {
+      current
+    }
+  }`;
+  

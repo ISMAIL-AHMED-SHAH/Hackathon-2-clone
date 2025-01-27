@@ -5,6 +5,8 @@ export interface Product {
     price: number;
     category: string;
     discountPrice?: number;
+    isFeaturedProduct?: boolean;
+    stockLevel?: number;
     image: {
     asset: {
         _ref: string;

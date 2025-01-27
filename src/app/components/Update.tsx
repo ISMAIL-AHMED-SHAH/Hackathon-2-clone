@@ -16,7 +16,7 @@ function Update() {
             Get Latest Update By Subscribe Our Newsletter
           </h2>
 
-          <Link href="/shoplist">
+          <Link href="/products">
           <button className="bg-[#FB2E86] text-white px-6 py-2 rounded-non text-lg font-medium">
             Shop Now
           </button>

@@ -1,5 +1,6 @@
 
 
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
 function TopCategory() {
@@ -32,10 +33,10 @@ function TopCategory() {
               {/* Hover Blue Circle Outline */}
               <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-[#3F509E] transition-all duration-300"></div>
 
-              {/* Hover View Shop Button */}
-              <button className="absolute bottom-2 bg-[#08D15F] text-white px-3 py-1 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+              <Button className="absolute bottom-2 bg-[#08D15F] text-white px-3 py-1 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 View Shop
-              </button>
+              </Button>
             </div>
 
             {/* Category Name and Price */}

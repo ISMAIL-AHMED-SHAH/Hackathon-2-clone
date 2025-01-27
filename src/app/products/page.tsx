@@ -92,7 +92,7 @@ function Products() {
                 {product.discountPrice ? (
                   <>
                     <span className="text-red-500 font-bold">
-                      ${product.discountPrice.toFixed(2)}
+                      ${product.discountPrice}
                     </span>
                     <span className="line-through text-gray-400 ml-2">
                       ${product.price}

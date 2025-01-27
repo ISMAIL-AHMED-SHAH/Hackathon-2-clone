@@ -69,9 +69,9 @@ const LatestProducts: React.FC = () => {
                 </h3>
                 <div className="text-gray-500 text-sm">
                   <span className="text-red-500 line-through mr-2">
-                    ${product.originalPrice.toFixed(2)}
+                    ${product.originalPrice}
                   </span>
-                  <span>${product.price.toFixed(2)}</span>
+                  <span>${product.price}</span>
                 </div>
               </div>
 

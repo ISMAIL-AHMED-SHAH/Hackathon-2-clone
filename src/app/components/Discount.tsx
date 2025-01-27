@@ -34,6 +34,8 @@ const DiscountItem: React.FC = () => {
             <li>Clear lines and geometric figures</li>
             <li>Material expose like metals</li>
           </ul>
+          
+          {/* Shop Now Button */}
           <Button className="mt-8 bg-pink-500 text-white px-6 py-3 rounded shadow-md hover:bg-pink-600">
             Shop Now
           </Button>

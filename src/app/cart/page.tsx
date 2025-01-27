@@ -100,7 +100,7 @@ export default function ShoppingCart() {
                           </div>
                         </div>
                       </td>
-                      <td className="p-4">${product.price.toFixed(2)}</td>
+                      <td className="p-4">${product.price}</td>
                       <td className="p-4">
                         <input
                           type="number"
@@ -108,7 +108,7 @@ export default function ShoppingCart() {
                           defaultValue={product.quantity}
                         />
                       </td>
-                      <td className="p-4">${(product.price * product.quantity).toFixed(2)}</td>
+                      <td className="p-4">${(product.price * product.quantity)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -133,11 +133,11 @@ export default function ShoppingCart() {
               <div className='w-full h-[1.9px] bg-opacity-20'></div>
               
               <p className="flex justify-between text-gray-700 mb-2">
-                <span>Subtotal:</span> <span>${initialCartProducts.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</span>
+                <span>Subtotal:</span> <span>${initialCartProducts.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
               </p>
               <div className="w-full h-px bg-gray-400 my-4"></div>
               <p className="flex justify-between text-gray-700 mb-2">
-                <span>Total :</span> <span>${initialCartProducts.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</span>
+                <span>Total :</span> <span>${initialCartProducts.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
               </p>
               <div className="w-full h-px bg-gray-400 my-4"></div>
               <button className="w-full bg-green-500 text-white py-2 px-4 rounded-md">

@@ -3,27 +3,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineEye } from "react-icons/ai";
 
+// Define the Product interface
+interface Product {
+  id: string;
+  name: string;
+  category: string;
+  price: number;
+  description: string;
+  discountPercentage?: number;
+  isFeaturedProduct?: boolean;
+  image: string;
+}
 
 const ShopList = async () => {
-
   const query = `*[_type == 'product']{
-        _id,
-        name,
-        category,
-        price,
-        description,
-        discountPercentage,
-        isFeaturedProduct,
-        "image": image.asset->url,
-}`
-const products = await client.fetch(query);
-// console.log(products);
+    _id,
+    name,
+    category,
+    price,
+    description,
+    discountPercentage,
+    isFeaturedProduct,
+    "image": image.asset->url,
+  }`;
 
+  const products: Product[] = await client.fetch(query);
 
- return (
- 
-  <>
-
+  return (
     <div className="font-sans text-[#151875]">
       {/* Header Section */}
       <div className="py-28 px-8">
@@ -81,7 +87,10 @@ const products = await client.fetch(query);
 
           {/* View */}
           <div className="flex items-center gap-2">
-            <label htmlFor="view" className="text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#FB2E86]">
+            <label
+              htmlFor="view"
+              className="text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#FB2E86]"
+            >
               View:
             </label>
             <input
@@ -96,7 +105,7 @@ const products = await client.fetch(query);
       {/* Product List */}
       <div className="p-8">
         <div className="space-y-6">
-          {products.map((product: any) => (
+          {products.map((product: Product) => (
             <div
               key={product.id}
               className="flex flex-col lg:flex-row bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
@@ -116,41 +125,13 @@ const products = await client.fetch(query);
               <div className="lg:w-2/3 lg:ml-6 mt-4 lg:mt-0">
                 <div className="w-full flex justify-between items-center">
                   <h3 className="text-xl font-semibold">{product.name}</h3>
-                  {/* Color Options */}
-                  {/* <div className="mt-2 flex gap-1">
-                    {product.colors.map((color, index) => (
-                      <span
-                        key={index}
-                        className={`w-3 h-3 ${color} rounded-full`}
-                      ></span>
-                    ))}
-                  </div> */}
                 </div>
 
                 {/* Price and Old Price */}
                 <div className="mt-4 flex items-center space-x-2">
-                  <span className="text-lg font-bold">{product.price}</span>
-                  <span className="text-red-500 line-through">
-                    {product.oldPrice}
-                  </span>
+                  <span className="text-lg font-bold">${product.price}</span>
                 </div>
-                <p className="mt-2 text-gray-600 w-96">{product.description}</p>
-
-                {/* Rating */}
-                <div className="mt-2 flex items-center">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <span
-                      key={index}
-                      className={`${
-                        index < product.rating
-                          ? "text-yellow-400"
-                          : "text-gray-300"
-                      } text-lg`}
-                    >
-                      ★
-                    </span>
-                  ))}
-                </div>
+                <p className="mt-2 text-gray-600">{product.description}</p>
 
                 {/* Action Buttons */}
                 <div className="mt-4 flex space-x-4">
@@ -172,8 +153,6 @@ const products = await client.fetch(query);
         </div>
       </div>
     </div>
-
-    </>
   );
 };
 
