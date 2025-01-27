@@ -86,6 +86,7 @@ export default {
             { title: 'Bags', value: 'Bags' },
             { title: 'Accessories', value: 'Accessories' },
             { title: 'Beauty', value: 'Beauty' },
+            { title: 'Watches', value: 'Watches' },
           ],
         },
         validation: (Rule: any) => Rule.required().error('Category is required'),

@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 
@@ -33,9 +34,9 @@ const DiscountItem: React.FC = () => {
             <li>Clear lines and geometric figures</li>
             <li>Material expose like metals</li>
           </ul>
-          <button className="mt-8 bg-pink-500 text-white px-6 py-3 rounded shadow-md hover:bg-pink-600">
+          <Button className="mt-8 bg-pink-500 text-white px-6 py-3 rounded shadow-md hover:bg-pink-600">
             Shop Now
-          </button>
+          </Button>
         </div>
 
         {/* Right Content */}
