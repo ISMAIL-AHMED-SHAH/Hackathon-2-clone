@@ -78,7 +78,7 @@ const Navbar = () => {
               <SheetTitle>Hekto</SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-6 mt-6">
-            <Link className="text-sm font-normal hover:text-black" href="/pages/demoproducts">
+            <Link className="text-sm font-normal hover:text-black" href="/products">
             Products
           </Link>
           <Link className="text-sm font-normal hover:text-black" href="/pages/shippinginfo">

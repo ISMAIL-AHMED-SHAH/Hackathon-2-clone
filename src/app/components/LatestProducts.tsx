@@ -1,24 +1,41 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { createClient } from "next-sanity";
+import { latestproducts } from "@/sanity/lib/quries";  // Same query as in your previous example
+
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  useCdn: process.env.NODE_ENV === "production",
+  apiVersion: "2025-01-15",
+});
+
+type Product = {
+  _id: string;
+  name: string;
+  price: string;
+  description: string;
+  originalPrice: string;
+  discountPrice: string;
+  sale: boolean;
+  image: { asset: { url: string } };
+};
 
 const LatestProducts: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
   const categories = ["New Arrival", "Best Seller", "Featured", "Special Offer"];
-  const productImages = [
-    "/prod1.png",
-    "/prod2.png",
-    "/prod3.png",
-    "/prod4.png",
-    "/prod5.png",
-    "/prod6.png",
-  ];
 
-  const products = Array(6).fill({
-    name: "Comfort Handy Craft",
-    price: 42.0,
-    originalPrice: 65.0,
-    sale: true,
-  });
+  // Fetch data from Sanity on component mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await client.fetch(latestproducts);
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <section className="py-20 bg-white">
@@ -48,18 +65,24 @@ const LatestProducts: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
             <div
-              key={index}
+              key={product._id}
               className="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 relative"
             >
               {/* Product Image */}
               <div className="w-full h-56">
-                <Image
-                  src={productImages[index % productImages.length]}
-                  alt={`Product ${index + 1}`}
-                  className="object-cover w-full h-full"
-                  width={365}
-                  height={306}
-                />
+                {product.image?.asset?.url ? (
+                  <Image
+                    src={product.image.asset.url}
+                    alt={`Product ${index + 1}`}
+                    className="object-contain w-full h-full"
+                    width={178}
+                    height={178}
+                  />
+                ) : (
+                  <div className="bg-gray-200 w-full h-full flex items-center justify-center">
+                    <span className="text-gray-500">No Image</span>
+                  </div>
+                )}
               </div>
 
               {/* Product Info */}
@@ -69,9 +92,9 @@ const LatestProducts: React.FC = () => {
                 </h3>
                 <div className="text-gray-500 text-sm">
                   <span className="text-red-500 line-through mr-2">
-                    ${product.originalPrice}
+                    ${product.price}
                   </span>
-                  <span>${product.price}</span>
+                  <span>${product.discountPrice}</span>
                 </div>
               </div>
 

@@ -21,13 +21,13 @@ export const relatedProductsQuery = groq`
   }
 `;
 
-export const featuredproducts = `*[_type == "product"][0..3]{
+export const featuredproducts = `*[_type == "product" && category == "Chair"][0...4]{
     _id,
     name,
     category,
     price,
     image {
-      asset -> {
+      asset->{
         url
       }
     },
@@ -35,4 +35,20 @@ export const featuredproducts = `*[_type == "product"][0..3]{
       current
     }
   }`;
+  
+  export const latestproducts = `*[_type == "product" && category == "Chair" && isFeaturedProduct == true][0...6]{
+  _id,
+  name,
+  price,
+  originalPrice,
+  sale,
+  image {
+    asset->{
+      url
+    }
+  },
+  slug {
+    current
+  }
+}`;
   
