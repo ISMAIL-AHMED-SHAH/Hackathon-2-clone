@@ -1,3 +1,7 @@
+'use client'
+
+
+import React from 'react'; // Import React to use React.use()
 import { client } from "@/sanity/lib/client";
 import { Product } from "../../../types/products";
 import { groq } from "next-sanity";
@@ -5,8 +9,11 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { StarIcon } from "lucide-react";
 import Link from "next/link";
-import { relatedProductsQuery } from "@/sanity/lib/quries"
+import { relatedProductsQuery } from "@/sanity/lib/quries";
 import classNames from "classnames";
+import { Button } from "@/components/ui/button";
+import { addToCart } from "@/app/actions/actions";
+import Swal from "sweetalert2";
 
 interface Props {
   params: { slug: string };
@@ -49,16 +56,31 @@ async function fetchRelatedProducts(category: string, slug: string) {
   }
 }
 
-export default async function ProductPage({ params }: Props) {
-  const { slug } = params;
-  const product = await fetchProduct(slug);
+export default function ProductPage({ params }: Props) {
+  const { slug } = params; // Unwrap params directly
+
+  const [product, setProduct] = React.useState<Product | null>(null);
+  const [relatedProducts, setRelatedProducts] = React.useState<Product[]>([]);
+
+  React.useEffect(() => {
+    // Fetch product and related products
+    const fetchData = async () => {
+      const productData = await fetchProduct(slug);
+      setProduct(productData);
+
+      if (productData) {
+        const relatedProductsData = await fetchRelatedProducts(productData.category, slug);
+        setRelatedProducts(relatedProductsData);
+      }
+    };
+
+    fetchData();
+  }, [slug]);
 
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-        <h1 className="text-3xl font-bold text-red-600">
-          Product Not Found
-        </h1>
+        <h1 className="text-3xl font-bold text-red-600">Product Not Found</h1>
         <p className="text-lg text-gray-600 mt-4">
           The product you are looking for does not exist or may have been removed.
         </p>
@@ -68,8 +90,6 @@ export default async function ProductPage({ params }: Props) {
       </div>
     );
   }
-
-  const relatedProducts = await fetchRelatedProducts(product.category, slug);
 
   const numStars = Math.round(product.rating?.rate || 0);
   const starArray = Array(numStars).fill(0);
@@ -82,6 +102,19 @@ export default async function ProductPage({ params }: Props) {
       : stockLevel > 0
       ? "Low Stock"
       : "Out of Stock";
+
+  const handleAddToCart = (e: React.MouseEvent, product: Product) => {
+    e.preventDefault();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: `${product.name} added to cart`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+    addToCart(product);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -128,7 +161,9 @@ export default async function ProductPage({ params }: Props) {
           <p className="lg:text-6xl text-3xl md:text-4xl text-blue-950 font-bold">
             {product.price ? `$${product.price}` : "Price not available"}
           </p>
-          <p className="text-lg font-sans">{product.description || "No description available."}</p>
+          <p className="text-lg font-sans">
+            {product.description || "No description available."}
+          </p>
           <p className="text-lg font-sans">Category: {product.category || "N/A"}</p>
           {/* Stock Level */}
           <p
@@ -140,6 +175,14 @@ export default async function ProductPage({ params }: Props) {
           >
             Stock Level: {stockStatus} ({stockLevel} units)
           </p>
+          <div>
+            <Button
+              className="bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:scale-100 transition-transform duration-200 ease-in-out"
+              onClick={(e) => handleAddToCart(e, product)}
+            >
+              Add To Cart
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -149,38 +192,37 @@ export default async function ProductPage({ params }: Props) {
         {relatedProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
             {relatedProducts.map((relatedProduct: Product) => (
-  <div
-    key={relatedProduct._id}
-    className="flex flex-col items-center border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300"
-  >
-    {relatedProduct.image ? (
-      <Image
-        src={urlFor(relatedProduct.image).url()}
-        alt={relatedProduct.name || "Related Product"}
-        width={150}
-        height={150}
-        className="object-contain w-full h-48"
-      />
-    ) : (
-      <div className="w-full h-48 bg-gray-100 rounded-md flex items-center justify-center">
-        <p className="text-gray-500">No Image</p>
-      </div>
-    )}
-    <h3 className="mt-4 text-lg font-semibold text-gray-800">
-      {relatedProduct.name}
-    </h3>
-    <p className="mt-2 text-sm text-gray-600">
-      ${relatedProduct.price}
-    </p>
-    <Link
-      href={`/products/${relatedProduct.slug.current}`}
-      className="mt-4 inline-block bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
-    >
-      View Product
-    </Link>
-  </div>
-))}
-
+              <div
+                key={relatedProduct._id}
+                className="flex flex-col items-center border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                {relatedProduct.image ? (
+                  <Image
+                    src={urlFor(relatedProduct.image).url()}
+                    alt={relatedProduct.name || "Related Product"}
+                    width={150}
+                    height={150}
+                    className="object-contain w-full h-48"
+                  />
+                ) : (
+                  <div className="w-full h-48 bg-gray-100 rounded-md flex items-center justify-center">
+                    <p className="text-gray-500">No Image</p>
+                  </div>
+                )}
+                <h3 className="mt-4 text-lg font-semibold text-gray-800">
+                  {relatedProduct.name}
+                </h3>
+                <p className="mt-2 text-sm text-gray-600">
+                  ${relatedProduct.price}
+                </p>
+                <Link
+                  href={`/products/${relatedProduct.slug.current}`}
+                  className="mt-4 inline-block bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
+                >
+                  View Product
+                </Link>
+              </div>
+            ))}
           </div>
         ) : (
           <p className="mt-8 text-gray-600">No related products found.</p>

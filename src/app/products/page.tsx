@@ -10,6 +10,10 @@ import { Product } from '../../types/products';
 import { client } from '@/sanity/lib/client';
 import { allproducts } from '@/sanity/lib/quries';
 import { urlFor } from '@/sanity/lib/image';
+import { addToCart } from '../actions/actions';
+import { Button } from '@/components/ui/button';
+import Swal from 'sweetalert2';
+
 function Products() {
 
     const [products, setProducts] = useState<Product[]>([]);
@@ -22,6 +26,19 @@ function Products() {
       }
       fetchProducts();
     }, []);
+
+    const handleAddToCart = (e: React.MouseEvent, product : Product) => {
+      e.preventDefault()
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: `${product.name} added to cart`,
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      addToCart(product)
+    }
     
 
   return (
@@ -126,6 +143,14 @@ function Products() {
                 </span>
                 <span className="text-sm text-gray-600 ml-2">(4.5)</span>
               </div>
+            </div>
+            <div>
+              <Button className='bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:scale-100 transition-transform duration-200 ease-in-out'
+              onClick={(e) => handleAddToCart(e, product)}
+              >
+                  Add To Cart
+              </Button>
+
             </div>
           </Link>
         </div>

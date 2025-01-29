@@ -6,7 +6,7 @@ export interface Product {
     category: string;
     discountPrice?: number;
     isFeaturedProduct?: boolean;
-    stockLevel?: number;
+    stockLevel: number;
     image: {
     asset: {
         _ref: string;
