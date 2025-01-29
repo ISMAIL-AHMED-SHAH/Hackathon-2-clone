@@ -87,7 +87,7 @@ function Products() {
       {products.map((product) => (
         <div
           key={product._id}
-          className="border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition duration-200 bg-white"
+          className="border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition duration-200 bg-white flex flex-col" // Make the card a flex container
         >
           <Link href={`/products/${product.slug.current}`}>
             <div className="overflow-hidden rounded-t-lg">
@@ -101,7 +101,7 @@ function Products() {
                 />
               )}
             </div>
-            <div className="p-4">
+            <div className="p-4 flex flex-col flex-grow"> {/* Make this section grow to fill space */}
               <h2 className="text-lg font-semibold text-gray-800 hover:text-blue-500">
                 {product.name}
               </h2>
@@ -144,15 +144,16 @@ function Products() {
                 <span className="text-sm text-gray-600 ml-2">(4.5)</span>
               </div>
             </div>
-            <div>
-              <Button className='bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:scale-100 transition-transform duration-200 ease-in-out'
-              onClick={(e) => handleAddToCart(e, product)}
-              >
-                  Add To Cart
-              </Button>
-
-            </div>
           </Link>
+          {/* Add to Cart Button */}
+          <div className="p-4 mt-auto"> {/* Use mt-auto to push the button to the bottom */}
+            <Button
+              className="w-full bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:scale-100 transition-transform duration-200 ease-in-out"
+              onClick={(e) => handleAddToCart(e, product)}
+            >
+              Add To Cart
+            </Button>
+          </div>
         </div>
       ))}
     </div>
