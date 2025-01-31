@@ -81,7 +81,7 @@ const FeaturedProducts = () => {
               <div className="absolute inset-x-0 bottom-4 flex justify-center z-10">
                 <Link
                   href={`/products/${product.slug.current}`}
-                  className="py-2 px-4 bg-white text-purple-500 font-bold rounded-md shadow-md hover:bg-purple-500 hover:text-white transition"
+                  className="py-2 px-4 bg-purple-00 text-purple-500 font-bold rounded-md shadow-md hover:bg-purple-500 hover:text-white transition"
                 >
                   View Details
                 </Link>

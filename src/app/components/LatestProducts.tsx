@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { createClient } from "next-sanity";
-import { latestproducts } from "@/sanity/lib/quries";  // Same query as in your previous example
+import { latestproducts } from "@/sanity/lib/quries";
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
