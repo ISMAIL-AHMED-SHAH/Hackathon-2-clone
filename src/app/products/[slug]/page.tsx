@@ -14,6 +14,11 @@ import { Button } from "@/components/ui/button";
 import { addToCart } from "@/app/actions/actions";
 import Swal from "sweetalert2";
 
+// Define the Props interface correctly
+interface Props {
+  params: { slug: string };
+}
+
 // Fetch product data
 async function fetchProduct(slug: string): Promise<Product | null> {
   try {
@@ -53,7 +58,7 @@ async function fetchRelatedProducts(category: string, slug: string) {
   }
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
+export default function ProductPage({ params }: Props) {
   const { slug } = params;
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
