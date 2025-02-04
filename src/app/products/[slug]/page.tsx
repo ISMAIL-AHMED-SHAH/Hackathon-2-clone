@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { client } from "@/sanity/lib/client";
 import { Product } from "../../../types/products";
 import { groq } from "next-sanity";
@@ -12,11 +14,7 @@ import { Button } from "@/components/ui/button";
 import { addToCart } from "@/app/actions/actions";
 import Swal from "sweetalert2";
 
-// Define the Props interface correctly
-interface Props {
-  params: { slug: string };
-}
-
+// Fetch product data
 async function fetchProduct(slug: string): Promise<Product | null> {
   try {
     return client.fetch(
@@ -37,7 +35,7 @@ async function fetchProduct(slug: string): Promise<Product | null> {
           count
         }
       }`,
-      { slug: slug || "" }
+      { slug }
     );
   } catch (error) {
     console.error("Error fetching product:", error);
@@ -45,6 +43,7 @@ async function fetchProduct(slug: string): Promise<Product | null> {
   }
 }
 
+// Fetch related products
 async function fetchRelatedProducts(category: string, slug: string) {
   try {
     return client.fetch(relatedProductsQuery, { category, slug });
@@ -54,13 +53,12 @@ async function fetchRelatedProducts(category: string, slug: string) {
   }
 }
 
-export default function ProductPage({ params }: Props) {
-  const { slug } = params; // Destructure `slug` from `params`
+export default function ProductPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
+  const [product, setProduct] = useState<Product | null>(null);
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
-  const [product, setProduct] = React.useState<Product | null>(null);
-  const [relatedProducts, setRelatedProducts] = React.useState<Product[]>([]);
-
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       const productData = await fetchProduct(slug);
       setProduct(productData);
@@ -115,6 +113,7 @@ export default function ProductPage({ params }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Product Image */}
         <div className="aspect-square w-full h-96 md:h-auto md:w-full">
           {product.image ? (
             <Image
@@ -131,6 +130,7 @@ export default function ProductPage({ params }: Props) {
           )}
         </div>
 
+        {/* Product Details */}
         <div className="flex flex-col justify-center gap-8">
           <div>
             <h1 className="lg:text-3xl text-2xl font-bold text-black">
@@ -159,6 +159,7 @@ export default function ProductPage({ params }: Props) {
             {product.description || "No description available."}
           </p>
           <p className="text-lg font-sans">Category: {product.category || "N/A"}</p>
+          {/* Stock Level */}
           <p
             className={classNames("text-lg font-semibold", {
               "text-green-600": stockStatus === "In Stock",
@@ -179,6 +180,7 @@ export default function ProductPage({ params }: Props) {
         </div>
       </div>
 
+      {/* Related Products Section */}
       <div className="mt-16">
         <h2 className="text-2xl font-bold text-black">Related Products</h2>
         {relatedProducts.length > 0 ? (
