@@ -55,7 +55,7 @@ const SearchBar = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={() => setIsFocused(true)}
-          onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+          onBlur={() => setTimeout(() => setIsFocused(false), 200)} 
           placeholder="Search products..."
           className="px-2 py-1 text-sm text-gray-700 outline-none"
         />

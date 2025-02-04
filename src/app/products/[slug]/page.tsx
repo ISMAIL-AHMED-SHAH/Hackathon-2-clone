@@ -1,7 +1,7 @@
 'use client'
 
 
-import React from 'react'; // Import React to use React.use()
+import React from 'react';
 import { client } from "@/sanity/lib/client";
 import { Product } from "../../../types/products";
 import { groq } from "next-sanity";
@@ -57,7 +57,7 @@ async function fetchRelatedProducts(category: string, slug: string) {
 }
 
 export default function ProductPage({ params }: Props) {
-  const { slug } = params; // Unwrap params directly
+  const { slug } = params; 
 
   const [product, setProduct] = React.useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = React.useState<Product[]>([]);

@@ -146,7 +146,7 @@ function Products() {
             </div>
           </Link>
           {/* Add to Cart Button */}
-          <div className="p-4 mt-auto"> {/* Use mt-auto to push the button to the bottom */}
+          <div className="p-4 mt-auto">
             <Button
               className="w-full bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:scale-100 transition-transform duration-200 ease-in-out"
               onClick={(e) => handleAddToCart(e, product)}

@@ -1,14 +1,13 @@
 "use client";
 
-import { useState } from "react";
+
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { FaSearch } from "react-icons/fa";
+
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import DropdownMenu from "./DropdownMenu";
-import SearchBar from "./SearchBar"; // ✅ Import the SearchBar component
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   return (
@@ -59,6 +58,9 @@ const Navbar = () => {
               <SheetTitle>Hekto</SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-6 mt-6">
+              <Link className="text-sm font-normal hover:text-black" href="/">
+                Home
+              </Link>
               <Link className="text-sm font-normal hover:text-black" href="/products">
                 Products
               </Link>
@@ -70,6 +72,9 @@ const Navbar = () => {
               </Link>
               <Link className="text-sm font-normal hover:text-black" href="/shop">
                 Shop
+              </Link>
+              <Link className="text-sm font-normal hover:text-black" href="/cart">
+                Cart
               </Link>
               <Link className="text-sm font-normal hover:text-black" href="/contact">
                 Contact

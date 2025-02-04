@@ -34,10 +34,10 @@ const Cart = () => {
     })
   }
 
-  const handleQuantity = (id: string, quantity: number) => {
-    updateCartQuantity(id, quantity)
-    setCatItems(getCartItems())
-  }
+  // const handleQuantity = (id: string, quantity: number) => {
+  //   updateCartQuantity(id, quantity)
+  //   setCatItems(getCartItems())
+  // }
 
   const handleIncrement = (id: string) => {
     const product = catItem.find((item) => item._id === id)
@@ -94,7 +94,7 @@ const Cart = () => {
               className="mb-6"
             />
             <p className="text-2xl font-semibold text-gray-800">Your Cart is Empty</p>
-            <p className="text-gray-500 mt-2">Looks like you haven't added anything to your cart yet.</p>
+            <p className="text-gray-500 mt-2">Looks like you haven&apos;t added anything to your cart yet.</p>
             <Link href="/" className="mt-6 bg-pink-500 text-white py-2 px-4 rounded-md">
               Continue Shopping
             </Link>
@@ -161,6 +161,8 @@ const Cart = () => {
 }
 
 export default Cart
+
+
 
 // import Image from "next/image";
 
