@@ -1,6 +1,3 @@
-'use client'
-
-
 import React from 'react';
 import { client } from "@/sanity/lib/client";
 import { Product } from "../../../types/products";
@@ -15,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { addToCart } from "@/app/actions/actions";
 import Swal from "sweetalert2";
 
+// Define the Props interface correctly
 interface Props {
   params: { slug: string };
 }
@@ -57,13 +55,12 @@ async function fetchRelatedProducts(category: string, slug: string) {
 }
 
 export default function ProductPage({ params }: Props) {
-  const { slug } = params; 
+  const { slug } = params; // Destructure `slug` from `params`
 
   const [product, setProduct] = React.useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = React.useState<Product[]>([]);
 
   React.useEffect(() => {
-    // Fetch product and related products
     const fetchData = async () => {
       const productData = await fetchProduct(slug);
       setProduct(productData);
@@ -94,7 +91,6 @@ export default function ProductPage({ params }: Props) {
   const numStars = Math.round(product.rating?.rate || 0);
   const starArray = Array(numStars).fill(0);
 
-  // Determine stock status
   const stockLevel = product.stockLevel ?? 0;
   const stockStatus =
     stockLevel > 10
@@ -119,7 +115,6 @@ export default function ProductPage({ params }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Product Image */}
         <div className="aspect-square w-full h-96 md:h-auto md:w-full">
           {product.image ? (
             <Image
@@ -136,7 +131,6 @@ export default function ProductPage({ params }: Props) {
           )}
         </div>
 
-        {/* Product Details */}
         <div className="flex flex-col justify-center gap-8">
           <div>
             <h1 className="lg:text-3xl text-2xl font-bold text-black">
@@ -165,7 +159,6 @@ export default function ProductPage({ params }: Props) {
             {product.description || "No description available."}
           </p>
           <p className="text-lg font-sans">Category: {product.category || "N/A"}</p>
-          {/* Stock Level */}
           <p
             className={classNames("text-lg font-semibold", {
               "text-green-600": stockStatus === "In Stock",
@@ -186,7 +179,6 @@ export default function ProductPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Related Products Section */}
       <div className="mt-16">
         <h2 className="text-2xl font-bold text-black">Related Products</h2>
         {relatedProducts.length > 0 ? (
