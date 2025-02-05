@@ -8,11 +8,11 @@ import { TiThList } from "react-icons/ti";
 import Link from 'next/link';
 import { Product } from '../../types/products';
 import { client } from '@/sanity/lib/client';
-import { allproducts } from '@/sanity/lib/quries';
 import { urlFor } from '@/sanity/lib/image';
 import { addToCart } from '../actions/actions';
 import { Button } from '@/components/ui/button';
 import Swal from 'sweetalert2';
+import { groq } from 'next-sanity';
 
 function Products() {
 
@@ -20,7 +20,22 @@ function Products() {
 
     useEffect(() => {
       async function fetchProducts() {
-        const fetchProducts : Product[] = await client.fetch(allproducts);
+        const fetchProducts : Product[] = await client.fetch(groq`*[_type == "product"]{
+          _id,
+          name,
+          price,
+          discountPrice,
+          stockLevel,
+          "image": image.asset->url,
+          stock,
+          category,
+          description,
+          slug,
+          rating {
+            rate,
+            count
+          }
+        }`);
         setProducts(fetchProducts);
         
       }
