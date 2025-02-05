@@ -1,8 +1,9 @@
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
-import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineEye } from "react-icons/ai";
-
+import WishlistButton from "@/app/components/WishlistButton"
+import AddToCartButton from "@/app/components/AddToCartButton";
+import { AiOutlineEye } from "react-icons/ai";
 
 interface Product {
   id: string;
@@ -54,10 +55,7 @@ const ShopList = async () => {
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           {/* Per Page */}
           <div className="flex items-center gap-2">
-            <label
-              htmlFor="perPage"
-              className="text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="perPage" className="text-sm font-medium text-gray-700">
               Per Page:
             </label>
             <input
@@ -69,10 +67,7 @@ const ShopList = async () => {
 
           {/* Sort By */}
           <div className="flex items-center gap-2">
-            <label
-              htmlFor="sortBy"
-              className="text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="sortBy" className="text-sm font-medium text-gray-700">
               Sort By:
             </label>
             <select
@@ -87,10 +82,7 @@ const ShopList = async () => {
 
           {/* View */}
           <div className="flex items-center gap-2">
-            <label
-              htmlFor="view"
-              className="text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#FB2E86]"
-            >
+            <label htmlFor="view" className="text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#FB2E86]">
               View:
             </label>
             <input
@@ -127,7 +119,6 @@ const ShopList = async () => {
                   <h3 className="text-xl font-semibold">{product.name}</h3>
                 </div>
 
-                {/* Price and Old Price */}
                 <div className="mt-4 flex items-center space-x-2">
                   <span className="text-lg font-bold">${product.price}</span>
                 </div>
@@ -135,14 +126,8 @@ const ShopList = async () => {
 
                 {/* Action Buttons */}
                 <div className="mt-4 flex space-x-4">
-                  <button className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300">
-                    <AiOutlineHeart size={24} />
-                  </button>
-                  <Link href="/cart">
-                    <button className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300">
-                      <AiOutlineShoppingCart size={24} />
-                    </button>
-                  </Link>
+                  <WishlistButton product={product} />
+                  <AddToCartButton product={product} />
                   <button className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300">
                     <AiOutlineEye size={24} />
                   </button>

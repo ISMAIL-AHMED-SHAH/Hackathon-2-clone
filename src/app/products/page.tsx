@@ -36,6 +36,7 @@ function Products() {
             count
           }
         }`);
+ 
         setProducts(fetchProducts);
         
       }
