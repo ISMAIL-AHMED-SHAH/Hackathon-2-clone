@@ -214,12 +214,20 @@ export default function ProductPage({ params }: Props) {
                 <p className="mt-2 text-sm text-gray-600">
                   ${relatedProduct.price}
                 </p>
+                <div className='flex items-center gap-4 mt-auto'>
                 <Link
                   href={`/products/${relatedProduct.slug.current}`}
-                  className="mt-4 inline-block bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
-                >
+                  className="mt-auto inline-block bg-pink-500 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-blue-500"
+                  >
                   View Product
                 </Link>
+                <Button
+              className="bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:scale-100 transition-transform duration-200 ease-in-out"
+              onClick={(e) => handleAddToCart(e, product)}
+              >
+              Add To Cart
+            </Button>
+              </div>
               </div>
             ))}
           </div>
