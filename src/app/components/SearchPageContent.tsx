@@ -83,7 +83,7 @@ const SearchPageContent = () => {
       ) : (
         <div className="text-center mt-6">
           <p className="text-gray-500">No products match your search. Try different keywords.</p>
-          <Image src="/no-results.svg" alt="No results" width={192} height={192} className="mx-auto mt-4" />
+          <Image src="/no-results.png" alt="No results" width={400} height={400} className="mx-auto mt-4" />
         </div>
       )}
     </div>

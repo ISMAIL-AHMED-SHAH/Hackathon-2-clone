@@ -1,7 +1,22 @@
 import { groq } from "next-sanity";
 
 
-export const allproducts = groq`*[_type == "product"]`;
+export const allproducts = groq`*[_type == "product"]{
+  _id,
+  name,
+  price,
+  discountPrice,
+  stockLevel,
+  "image": image.asset->url, // Ensure the image URL is fetched correctly
+  stock,
+  category,
+  description,
+  slug,
+  rating {
+    rate,
+    count
+  }
+}`;
 
 export const fourproducts = groq`*[_type == "product"]{0..3}`;
 

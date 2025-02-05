@@ -101,7 +101,7 @@ function Products() {
                 />
               )}
             </div>
-            <div className="p-4 flex flex-col flex-grow"> {/* Make this section grow to fill space */}
+            <div className="p-4 flex flex-col flex-grow"> 
               <h2 className="text-lg font-semibold text-gray-800 hover:text-blue-500">
                 {product.name}
               </h2>
