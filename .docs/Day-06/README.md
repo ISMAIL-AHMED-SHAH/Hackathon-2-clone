@@ -37,6 +37,7 @@ On Day 6, I focused on preparing my marketplace for deployment by setting up a s
    - Chose Vercel for its seamless integration with Next.js and GitHub.
    - Connected the GitHub repository to Vercel for automated deployments.
    - Configured build settings and added necessary scripts for deployment.
+    ![Deployed](vercel.png)
 
 ### Step 2: Configure Environment Variables
 1. **Create a `.env` File**:
